@@ -13,7 +13,7 @@ dependencies:
     - pip install s3cmd
 test:
   override:
-    - make html
+    - make SPHINXOPTS=-W html
 deployment:
   production:
     branch: master

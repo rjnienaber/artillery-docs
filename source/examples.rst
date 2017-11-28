@@ -47,6 +47,7 @@ When a virtual user is launched and picks a scenario where these variables are u
 
 To tell Artillery to read the lines in sequence, set ``order`` attribute to ``sequence``:
 ::
+
   payload:
     path: "./relative/path/to/mydata.csv"
     fields:

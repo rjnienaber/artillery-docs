@@ -1,13 +1,15 @@
 Debugging your scripts
-************
+**********************
 
 Artillery can be configured to print debug information as it's running by setting
 the ``DEBUG`` environment variable. For example:
 ::
+
   DEBUG=http artillery run my-script.yaml
 
 Or if you are on Windows:
 ::
+
   set DEBUG=http
   artillery run my-script.yaml
 
@@ -22,6 +24,7 @@ Set ``DEBUG`` to:
 
 Multiple settings can be combined, for example:
 ::
+
   DEBUG=http,http:response artillery run my-script.yaml
   
 Printing to the console
@@ -69,10 +72,11 @@ one virtual user. For example:
 
 Tell Artillery to use the "debug" environment with:
 ::
+
   artillery run -e debug my-script.yaml
 
 Logging everything
-##############
+##################
 
 You can print all debug information (including debug information from
 Artillery's dependencies) by setting ``DEBUG=*``

@@ -361,7 +361,7 @@ If count is omitted, the loop will run *indefinitely*.
 The current step of the loop is available inside a loop through the ``$loopCount`` variable (for example going from 1 too 100 in the example above).
 
 Advanced: writing custom logic in Javascript
-#################################
+############################################
 
 The HTTP engine has support for "hooks", which allow for custom JS functions to be called at certain points during the execution of a scenario.
 
@@ -439,6 +439,7 @@ Function signatures
 
 A function invoked in a ``beforeRequest`` hook should have the following signature:
 ::
+
   function myBeforeRequestHandler(requestParams, context, ee, next) {
   }
 
@@ -454,6 +455,7 @@ Where:
 
 A function invoked in an ``afterResponse`` hook should have the following signature:
 ::
+
   function myAfterResponseHandler(requestParams, reponse, context, ee, next) {
   }
 
@@ -470,6 +472,7 @@ The ``function`` action
 
 In addition to request and scenario hooks, custom functions can be called as steps in a scenario with the ``function`` action.
 ::
+
     config:
       #
       # configuration section
@@ -487,6 +490,7 @@ In addition to request and scenario hooks, custom functions can be called as ste
                 
 A function invoked in a ``function`` action should have the following signature:
 ::
+
   function myFunction(context, ee, next) {
   }
 

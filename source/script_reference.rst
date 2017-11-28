@@ -78,17 +78,13 @@ Putting it all together:
   config:
     target: "http://myapp.staging.local"
     phases:
-      -
-        duration: 300
+      - duration: 300
         arrivalRate: 5
         name: "Warm-up"
-      -
-        pause: 10
-      -
-        duration: 60
+      - pause: 10
+      - duration: 60
         arrivalCount: 30
-      -
-        duration: 600
+      - duration: 600
         arrivalRate: 50
         name: "High load phase"
   scenarios:
@@ -109,19 +105,14 @@ Think of a `rampTo` as a shortcut to manually writing out a sequence of arrival 
 is equivalent to:
 ::
 
-  -
-    arrivalRate: 0
+  - arrivalRate: 0
     duration: 1.96
-  -
-    arrivalRate: 1
+  - arrivalRate: 1
     duration: 1.96
-  -
-    arrivalRate: 2
+  - arrivalRate: 2
     duration: 1.96
-  -
-     ... etc ...
-  -
-    arrivalRate: 50
+  - ... etc ...
+  - arrivalRate: 50
     duration: 2
 
 
@@ -135,8 +126,7 @@ You can specify a number of named environments with associated configuration. E.
   config:
     target: "http://wontresolve.local:3003"
     phases:
-      -
-        duration: 10
+      - duration: 10
         arrivalRate: 1
     environments:
       production:
@@ -144,8 +134,7 @@ You can specify a number of named environments with associated configuration. E.
       staging:
         target: "http://127.0.0.1:3003"
         phases:
-          -
-            duration: 20
+          - duration: 20
             arrivalRate: 1
   scenarios:
     - ...
@@ -169,32 +158,30 @@ Payload files are in the CSV format and Artillery allows you to map each of the 
         - "username"
         - "password"
   scenarios:
-    -
-      post:
-        url: "/auth"
-        json:
-          username: "{{ username }}"
-          password: "{{ password }}"
+    - post:
+      url: "/auth"
+      json:
+        username: "{{ username }}"
+        password: "{{ password }}"
 
 
 
 To use multiple CSV files ``"payload"`` can also be an an array:
 
 ::
+
   payload:
-    -
-      path: "./pets.csv"
+    - path: "./pets.csv"
       fields:
-        - "species"
-        - "name"
-    -
-      path: "./urls.csv"
+      - "species"
+      - "name"
+    - path: "./urls.csv"
       fields:
         - "url"
 
 
 Ordering
---------
+~~~~~~~~
 
 Rows from the CSV file are picked *at random* by default. To iterate through the rows in sequence (looping around and starting from the beginning after the last row has been reached), set the ``"order"`` attribute to ``"sequence"``:
 ::
@@ -207,8 +194,7 @@ Rows from the CSV file are picked *at random* by default. To iterate through the
         - "password"
       order: "sequence"
   scenarios:
-    -
-      # ... rest of the script
+    - # ... rest of the script
 
 
 ``scenarios``
@@ -240,7 +226,7 @@ Weights are optional, and if not specified are set to ``1`` (so each scenario is
 A "flow" is an array of operations that a virtual user performs, e.g. GET and POST requests for an `HTTP <testing_http.html>`_ scenario.
 
 ``think``
----------
+~~~~~~~~~
 
 You can use a ``think`` step in a flow to pause the execution of the scenario for N seconds, e.g.:
 ::
